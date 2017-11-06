@@ -23,3 +23,5 @@ onde "e" a força eletromotriz, "Va" é a tensão de armadura e "Ra e "La" são 
 
 ●	Equação da força eletromotriz
 
+<a href="https://imgur.com/KYwKq7K"><img src="https://i.imgur.com/KYwKq7K.jpg" title="source: imgur.com" /></a>
+
