@@ -44,3 +44,29 @@ O ângulo mecânico é escolhido como variável de saída, ou seja, "y = 0m" . E
 
 <a href="https://imgur.com/Rlnz2DM"><img src="https://i.imgur.com/Rlnz2DM.jpg" title="source: imgur.com" /></a>
 
+Fazendo a Transformada de Laplace das quatro equações, tem-se:
+
+ 
+<p align="center"><b>(1)</b>
+<p align="center"><a href="https://imgur.com/TFnhZnh"><img src="https://i.imgur.com/TFnhZnh.jpg" title="source: imgur.com" /></a>
+  
+<p align="center"><b>(2)</b>
+<p align="center"><a href="https://imgur.com/kmisbky"><img src="https://i.imgur.com/kmisbky.jpg" title="source: imgur.com" /></a>
+<p align="center"><a href="https://imgur.com/J9flRiF"><img src="https://i.imgur.com/J9flRiF.jpg" title="source: imgur.com" /></a>
+
+<p align="center"><b>(3)</b>
+<p align="center"><a href="https://imgur.com/E7CSuRj"><img src="https://i.imgur.com/E7CSuRj.jpg" title="source: imgur.com" /></a>
+ 
+ Isolando o valor de "Ia(S)" na Equação 1, usando a Equação 2 e substituindo na Equação 3, obtém-se:
+ 
+<p align="center"><a href="https://imgur.com/hqkPNwb"><img src="https://i.imgur.com/hqkPNwb.jpg" title="source: imgur.com" /></a>
+  
+  2.2 DIAGRAMA DE BLOCOS
+
+O projeto do sistema de controle é fundamental para minimizar os efeitos dos distúrbios sobre a variável de processo que, no caso, é o ângulo.
+
+<p align="center"><a href="https://imgur.com/T6YvzYw"><img src="https://i.imgur.com/T6YvzYw.jpg" title="source: imgur.com" /></a>
+  
+  2.3 FLUXOGRAMA
+  
+  <p align="center"><a href="https://imgur.com/rak1bFH"><img src="https://i.imgur.com/rak1bFH.jpg" title="source: imgur.com" /></a>
