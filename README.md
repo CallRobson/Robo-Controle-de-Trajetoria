@@ -70,3 +70,15 @@ O projeto do sistema de controle é fundamental para minimizar os efeitos dos di
   2.3 FLUXOGRAMA
   
   <p align="center"><a href="https://imgur.com/rak1bFH"><img src="https://i.imgur.com/rak1bFH.jpg" title="source: imgur.com" /></a>
+  
+  3. IMPLEMENTAÇÃO
+
+3.1 PONTE H
+3.1.1 O que é ponte H?
+
+É um circuito composto por um arranjo de 4 transistores, é capaz de acionar simultaneamente dois motores DC controlando não apenas seus sentidos, como também suas velocidades. 
+Seu funcionamento dá-se pelo chaveamento de componentes eletrônicos usualmente utilizando do método de PWM para determinar além da polaridade, o módulo da tensão em um dado ponto de um circuito.
+As pontes H em possuem este nome devido ao formato que é montado o circuito, semelhante a letra H. O circuito utiliza quatro chaves (S1, S2, S3 e S4) que são acionadas de forma alternada, ou seja, (S1-S3) ou (S2-S4), veja as figuras abaixo. Dependendo da configuração entre as chaves teremos a corrente percorrendo o motor hora por um sentido, hora por outro.
+
+<p align="center"><a href="https://imgur.com/pJtPexn"><img src="https://i.imgur.com/pJtPexn.jpg" title="source: imgur.com" /></a>
+
