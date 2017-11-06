@@ -25,5 +25,22 @@ onde "e" a força eletromotriz, "Va" é a tensão de armadura e "Ra e "La" são 
 
 <a href="https://imgur.com/KYwKq7K"><img src="https://i.imgur.com/KYwKq7K.jpg" title="source: imgur.com" /></a>
 
+onde "0m" é o ângulo mecânico e "Ke" é uma constante.
 
+●	Equação do torque gerado
+
+<a href="https://imgur.com/Qr87SVQ"><img src="https://i.imgur.com/Qr87SVQ.jpg" title="source: imgur.com" /></a>
+
+onde "Tm" é o torque mecânico gerado pelo motor e "Kt" uma constante.
+
+Segunda lei de Newton para o movimento de rotação
+
+<a href="https://imgur.com/rBwo2wQ"><img src="https://i.imgur.com/rBwo2wQ.jpg" title="source: imgur.com" /></a>
+
+onde "Jm" é a inércia do conjunto motor-carga, "b" representa um coeficiente de atrito e "d" representa a variação de direção que constitui a perturbação.
+O ângulo mecânico é escolhido como variável de saída, ou seja, "y = 0m" . Então as equações da força eletromotriz e do torque gerado são reescritas como:
+
+<a href="https://imgur.com/H4Hhxb9"><img src="https://i.imgur.com/H4Hhxb9.jpg" title="source: imgur.com" /></a>
+
+<a href="https://imgur.com/Rlnz2DM"><img src="https://i.imgur.com/Rlnz2DM.jpg" title="source: imgur.com" /></a>
 
