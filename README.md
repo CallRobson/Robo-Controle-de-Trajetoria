@@ -74,6 +74,7 @@ O projeto do sistema de controle é fundamental para minimizar os efeitos dos di
   3. IMPLEMENTAÇÃO
 
 3.1 PONTE H
+
 3.1.1 O que é ponte H?
 
 É um circuito composto por um arranjo de 4 transistores, é capaz de acionar simultaneamente dois motores DC controlando não apenas seus sentidos, como também suas velocidades. 
@@ -84,12 +85,27 @@ As pontes H em possuem este nome devido ao formato que é montado o circuito, se
   
 Quando nenhum par de chaves está acionado, o motor está desligado (a). Quando o par S1-S3 é acionado a corrente percorre S1-S3 fazendo com que o motor gire em um sentido (b). Já quando o par S2-S4 é acionado a corrente percorre por outro caminho fazendo com que o motor gire no sentido contrário (c).
 
-3.1.2 DRIVE MOTOR PONTE H - L298N
+3.1.2 Drive Motor Ponte H - L298N
 
-<a href="https://imgur.com/RUM4UlW"><img src="https://i.imgur.com/RUM4UlW.jpg" title="source: imgur.com" /></a>
+<p align="center"><a href="https://imgur.com/RUM4UlW"><img src="https://i.imgur.com/RUM4UlW.jpg" title="source: imgur.com" /></a>
 
 Este Driver Ponte H é baseado no chip L298N, construído para controlar cargas indutivas como relés, solenoides, motores DC e motores de passo, permitindo o controle não só do sentido de rotação do motor, como também da sua velocidade, utilizando os pinos PWM do Arduino.
 
+3.1.2.1 Especificações:
 
+– Tensão de Operação: 4~35v
+– Chip: ST L298N
+– Controle de 2 motores DC ou 1 motor de passo
+– Corrente de Operação máxima: 2A por canal ou 4A max
+– Tensão lógica: 5v
+– Corrente lógica: 0~36mA
+– Limites de Temperatura: -20 a +135°C
+– Potência Máxima: 25W
+– Dimensões: 43 x 43 x 27mm
+– Peso: 30g
+
+3.1.2.2 Funcionamento:
+
+<p align="center"><a href="https://imgur.com/yF2jMEz"><img src="https://i.imgur.com/yF2jMEz.jpg" title="source: imgur.com" /></a>
 
 
