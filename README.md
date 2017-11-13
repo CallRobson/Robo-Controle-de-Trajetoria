@@ -137,3 +137,17 @@ Este Driver Ponte H é baseado no chip L298N, construído para controlar cargas 
 
 A tabela abaixo mostra a ordem de ativação do Motor A através dos pinos IN1 e IN2. O mesmo esquema pode ser aplicado aos pinos IN3 e IN4, que controlam o Motor B.
 
+<p align="center"><a href="https://imgur.com/tZYdGzk"><img src="https://i.imgur.com/tZYdGzk.jpg" title="source: imgur.com" /></a>
+  
+  3.1.2.3 Conexão com o Arduino UNO:
+
+Vamos mostrar dois esquemas de ligação deste módulo ao Arduino Uno R3.
+O primeiro circuito utiliza a alimentação do próprio Arduino, e deve ser feito sem o Jumper em (Ativa 5V). Utilizamos 2 motores DC 5V.
+
+<p align="center"><a href="https://imgur.com/U3tVUvB"><img src="https://i.imgur.com/U3tVUvB.jpg" title="source: imgur.com" /></a>
+  
+  O segundo circuito (esquema do nosso projeto) utiliza alimentação externa e 2 motores DC de 12V. Nesse caso precisamos colocar o jumper em Ativa 5v:
+  
+<p align="center"><a href="https://imgur.com/aSYylXE"><img src="https://i.imgur.com/aSYylXE.jpg" title="source: imgur.com" /></a>
+  
+  
