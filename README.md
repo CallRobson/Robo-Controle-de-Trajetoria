@@ -94,18 +94,46 @@ Este Driver Ponte H é baseado no chip L298N, construído para controlar cargas 
 3.1.2.1 Especificações:
 
 – Tensão de Operação: 4~35v
+
 – Chip: ST L298N
+
 – Controle de 2 motores DC ou 1 motor de passo
+
 – Corrente de Operação máxima: 2A por canal ou 4A max
+
 – Tensão lógica: 5v
+
 – Corrente lógica: 0~36mA
+
 – Limites de Temperatura: -20 a +135°C
+
 – Potência Máxima: 25W
+
 – Dimensões: 43 x 43 x 27mm
+
 – Peso: 30g
 
 3.1.2.2 Funcionamento:
 
 <p align="center"><a href="https://imgur.com/yF2jMEz"><img src="https://i.imgur.com/yF2jMEz.jpg" title="source: imgur.com" /></a>
 
+(Motor A) e (Motor B) se referem aos conectores para ligação de 2 motores DC ou 1 motor de passo.
+
+➢	OUT1 - Terminal positivo do Motor 1 DC ou A+ do motor de passo
+
+➢	OUT2 - Terminal negativo do Motor 1 DC ou A- do motor de passo
+
+➢	OUT3 - Terminal positivo do Motor 2 DC ou B+ do motor de passo
+
+➢	OUT4 - Terminal negativo do Motor 2 DC ou B- do motor de passo
+
+(Ativa MA) e (Ativa MB) – são os pinos responsáveis pelo controle PWM dos motores A e B. Se estiver com jumper, não haverá controle de velocidade, pois os pinos estarão ligados aos 5v. Se estiver sem o jumper, esses pinos podem ser utilizados em conjunto com os pinos PWM do Arduino
+
+(Ativa 5v) e (5v) – Este Driver Ponte H L298N possui um regulador de tensão integrado. Quando o driver está operando entre 6-35V, este regulador disponibiliza uma saída regulada de +5v no pino (5v) para um uso externo (com jumper), podendo alimentar por exemplo outro componente eletrônico. Portanto não alimente este pino (5v) com +5v do Arduino se estiver controlando um motor de 6-35v e jumper conectado, isto danificará a placa. O pino (5v) somente se tornará uma entrada caso esteja controlando um motor de 4-5v (sem jumper), assim poderá usar a saída +5v do Arduino.
+
+(6-35v) e (GND) – Aqui será conectado a fonte de alimentação externa quando o driver estiver controlando um motor que opere entre 6-35v. Por exemplo se estiver usando um motor DC 12v, basta conectar a fonte externa de 12v neste pino e (GND).
+
+(Entrada) – Este barramento é composto por IN1, IN2, IN3 e IN4. Sendo estes pinos responsáveis pela rotação do Motor A (IN1 e IN2) e Motor B (IN3 e IN4).
+
+A tabela abaixo mostra a ordem de ativação do Motor A através dos pinos IN1 e IN2. O mesmo esquema pode ser aplicado aos pinos IN3 e IN4, que controlam o Motor B.
 
