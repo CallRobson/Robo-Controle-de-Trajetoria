@@ -81,4 +81,8 @@ Seu funcionamento dá-se pelo chaveamento de componentes eletrônicos usualmente
 As pontes H em possuem este nome devido ao formato que é montado o circuito, semelhante a letra H. O circuito utiliza quatro chaves (S1, S2, S3 e S4) que são acionadas de forma alternada, ou seja, (S1-S3) ou (S2-S4), veja as figuras abaixo. Dependendo da configuração entre as chaves teremos a corrente percorrendo o motor hora por um sentido, hora por outro.
 
 <p align="center"><a href="https://imgur.com/pJtPexn"><img src="https://i.imgur.com/pJtPexn.jpg" title="source: imgur.com" /></a>
+  
+Quando nenhum par de chaves está acionado, o motor está desligado (a). Quando o par S1-S3 é acionado a corrente percorre S1-S3 fazendo com que o motor gire em um sentido (b). Já quando o par S2-S4 é acionado a corrente percorre por outro caminho fazendo com que o motor gire no sentido contrário (c).
+
+3.1.2 DRIVE MOTOR PONTE H - L298N
 
