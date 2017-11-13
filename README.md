@@ -86,3 +86,10 @@ Quando nenhum par de chaves está acionado, o motor está desligado (a). Quando 
 
 3.1.2 DRIVE MOTOR PONTE H - L298N
 
+<a href="https://imgur.com/RUM4UlW"><img src="https://i.imgur.com/RUM4UlW.jpg" title="source: imgur.com" /></a>
+
+Este Driver Ponte H é baseado no chip L298N, construído para controlar cargas indutivas como relés, solenoides, motores DC e motores de passo, permitindo o controle não só do sentido de rotação do motor, como também da sua velocidade, utilizando os pinos PWM do Arduino.
+
+
+
+
