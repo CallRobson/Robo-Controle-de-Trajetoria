@@ -150,4 +150,19 @@ O primeiro circuito utiliza a alimentação do próprio Arduino, e deve ser feit
   
 <p align="center"><a href="https://imgur.com/aSYylXE"><img src="https://i.imgur.com/aSYylXE.jpg" title="source: imgur.com" /></a>
   
+3.1.2.4 Controlando os motores DC:
+Para controlar os motores DC, ligamos cada um dos motores às conexões A e B no módulo L298N. No caso do nosso projeto, estamos usando quatro motores, porém os dois motores de cada lado estão ligados em paralelo entre si, sendo assim o módulo L298N enxerga como se existisse apenas um motor de cada lado. Assegure-se de que a polaridade dos motores é a mesma, caso contrário, é preciso trocá-las garantido que ambos os motores rodam para frente ou para trás e não um para a frente e outro para trás.
+
+Em seguida, ligamos a fonte de alimentação (no nosso caso, uma pilha de 9v): os terminais positivo e o negativo da fonte nos pinos 6-35v e GND do módulo L298N, respectivamente. Utilizamos outra pilha de 9v para alimentar o Arduino UNO. Não esqueça de ligar o GND do Arduino ao GND do módulo L298N para completar a alimentação do circuito.
+Agora ligaremos seis pinos das saídas digitais do Arduino, dois destes têm de ser PWM (modulação por largura de pulso) que serão ligados aos pinos Ativa MA e Ativa MB do módulo L298N para controlar a velocidade dos motores, os outros quatro pinos devem ser ligados aos pinos de entrada do módulo L298N (IN1, IN2, IN3 e IN4) para controlar o sentido de rotação dos motores. Os pinos PWM são indicadas pelo til (“~”) ao lado do número do pino, como mostra a figura abaixo:
   
+<p align="center"><a href="https://imgur.com/C8qyo7e"><img src="https://i.imgur.com/C8qyo7e.jpg" title="source: imgur.com" /></a>
+  
+ No nosso projeto ligamos os pinos D7, D8, D9 e D10 da saída digital do Arduino aos pinos IN1, IN2, IN3 e IN4 do módulo L298N, respectivamente. Em seguida, ligamos os pinos D6 e D11 da saída digital do Arduino aos pinos Ativa MA e Ativa MB do módulo L298N, respectivamente. Não esquecer de remover os jumpers de Ativa MA e Ativa MB.
+ 
+A direção do motor é controlada através do envio de um sinal de HIGH ou LOW para cada motor (ou canal). Por exemplo para o motor A, um sinal HIGH para IN1 e LOW para IN2 fará com que ele gire num sentido, já um sinal LOW para IN1 e HIGHT para IN2 fará com que ele gire noutro sentido.
+
+No entanto, os motores não irão girar até que um sinal HIGH seja aplicado no pinos Ativa MA e Ativa MB. Eles podem ser desligados com um sinal LOW aos mesmos pinos. No entanto, se for preciso controlar a velocidade dos motores (que é o caso do nosso projeto), o sinal PWM do pino digital ligado ao pino respectivo permite garantir a mesma.
+Em seguida, temos que fazer o upload do programa para o Arduino.
+
+
