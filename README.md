@@ -165,4 +165,58 @@ A direção do motor é controlada através do envio de um sinal de HIGH ou LOW 
 No entanto, os motores não irão girar até que um sinal HIGH seja aplicado no pinos Ativa MA e Ativa MB. Eles podem ser desligados com um sinal LOW aos mesmos pinos. No entanto, se for preciso controlar a velocidade dos motores (que é o caso do nosso projeto), o sinal PWM do pino digital ligado ao pino respectivo permite garantir a mesma.
 Em seguida, temos que fazer o upload do programa para o Arduino.
 
+3.2 MÓDULO ACELERÔMETRO E GIROSCÓPIO MPU6050
+
+<p align="center"><a href="https://imgur.com/b5X8sB5"><img src="https://i.imgur.com/b5X8sB5.jpg" title="source: imgur.com" /></a>
+ 
+ Nesse módulo temos em uma mesma placa um acelerômetro e um giroscópio de alta precisão, tudo isso controlado por um único CI, o MPU6050. Além dos dois sensores, tem embutido um recurso chamado DMP (Digital Motion Processor), responsável por fazer cálculos complexos com os sensores e cujos dados podem ser usados para sistemas de reconhecimento de gestos, navegação (GPS), jogos e diversas outras aplicações. Outro recurso adicional é o sensor de temperatura embutido no CI, que permite medições entre -40 e +85 ºC.
+ 
+ 3.2.1 Pinagem e endereçamento do MPU 6050
+ 
+ <p align="center"><a href="https://imgur.com/P5Kg52i"><img src="https://i.imgur.com/P5Kg52i.jpg" title="source: imgur.com" /></a>
+  
+ A comunicação com o Arduino usa a interface I2C, por meio dos pinos SCL e SDA do sensor. Nos pinos XDA e XCL você pode ligar outros dispositivos I2C, como um magnetômetro por exemplo, e criar um sistema de orientação completo. A alimentação do módulo pode variar entre 3 e 5v, mas para melhores resultados e precisão recomenda-se utilizar 5v. O pino AD0 desconectado define que o endereço I2C do sensor é 0x68. Conecte o pino AD0 ao pino 3.3V do Arduino para que o endereço seja alterado para 0x69. Essa mudança permite que você tenha dois módulos MPU-6050 em um mesmo circuito.
+ 
+ 3.2.2 Conexão com o Arduino UNO:
+ 
+ Para obter as informações de medição do ângulo de inclinação do veículo, foi utilizado o acelerômetro. Os giroscópios são utilizados para manter ou para medir orientação e medem a velocidade angular do módulo (provavelmente graus por segundo).
+A figura a seguir mostra a conexão do módulo MPU6050 ao Arduino.
+
+
+ <p align="center"><a href="https://imgur.com/vn3nX3r"><img src="https://i.imgur.com/vn3nX3r.jpg" title="source: imgur.com" /></a>
+  
+  3.3 SOFTWARE
+  
+3.3.1 Programação (Código)
+
+3.3.2 Sistema de Controle
+
+O sistema de controle tem como principal objetivo, manter o processo dentro dos parâmetros desejados, com o uso de sensores, atuadores e sistemas de computadores projetados para realizar as atividades de maneira segura.  Sendo o processo, no ramo industrial, um conjunto de operações realizadas por um determinado equipamento, ou determinados equipamentos, com pelo menos, uma variável física ou química do material. Alguns conceitos importantes a mencionar:
+
+●	Variáveis de Processo: São as condições internas ou externas, que influenciam diretamente o processo industrial, sendo necessário realizar o controle das mesmas. Exemplo: Pressão, volume, temperatura, vazão, pH, velocidade, etc.;
+
+●	Variável Controlada: Indica, diretamente, a forma desejada do produto;
+
+●	Variável Manipulada: Onde o controlador automático atua, a fim de manter, dentro dos parâmetros desejados;
+
+●	Valor desejado (setpoint): Valor de referência para a variável, que deseja manter o controle;
+
+●	Controle de Malha Aberta: O sinal de saída não exerce nenhuma ação de controle no sistema. Utilizado somente quando não há distúrbios internos ou externos;
+
+●	Controle de Malha Fechada: São sistemas com realimentação, tendo o objetivo de minimizar os erros e acertar a saída do sistema, de acordo com um valor desejado.
+
+O algoritmo PID é aplicado, justamente, em controle de malha fechada. Como foi mencionado acima, tem o objetivo de manter a saída dentro de um valor desejado (setpoint).
+
+3.3.3 PID (Proporcional Integral Derivativo)
+
+O Controle PID é um algoritmo utilizado em controle de processos, de forma a deixar o mesmo muito mais preciso.  Unindo as ações proporcional (minimiza o erro), integral (zera o erro), derivativo (antecipa o erro), controlando uma variável de processo.
+
+Um controlador proporcional (Kp) terá o efeito de reduzir o tempo de subida e reduzirá, mas jamais eliminará, o erro em regime permanente. No modo Proporcional, o controlador simplesmente multiplica o Erro pelo Ganho Proporcional (Kp) para obter a saída do controlador. 
+
+Um controlador integral (Ki) terá o efeito de eliminar o erro em regime permanente, mas ele deixará pior a resposta transiente. 
+
+Adicionando a ação derivativa pode permitir que você tenha maiores ganhos de P e I e ainda manter o loop estável, dando-lhe uma resposta mais rápida e melhor desempenho de loop. Se você pensar nisso, a ação Derivativa pode melhorar a ação do controlador porque ela prediz o que ainda está por acontecer ao projetar a taxa atual de mudança para o futuro. Isto significa que não está sendo contabilizado o valor medido atual, mas sim um valor de medição futuro.Um controlador derivativo (Kd) terá o efeito de incrementar a estabilidade do sistema, reduzindo o overshoot, e melhorando a resposta transiente.
+
+
+
 
