@@ -315,6 +315,19 @@ Valor: R$ 40,00
 
 <p align="center"><a href="https://imgur.com/37Ezv3Q"><img src="https://i.imgur.com/37Ezv3Q.jpg" title="source: imgur.com" /></a>
   
+Custo total de material: R$ 379,50
+
+Estimamos este mesmo valor relacionado ao tempo dedicado e à mão de obra para a montagem, programação e testes do projeto.
+
+Um exemplo de produto que o nosso projeto poderia se tornar, com as devidas melhorias e adaptações, é o citado na aplicação, veículo auto equilibrante, com o valor médio de mercado em torno de R$ 2.000,00. Considerando que investiríamos mais algo em torno de R$ 600,00 nas melhorias e adaptações, totalizando um valor final para o produto de R$ 1.359,00. Teríamos, então, lucro de 47%.
+
+5. CONCLUSÃO
+
+Neste projeto conseguimos alcançar o objetivo de fazer o controle de trajetória de um carro robô usando a ferramenta base controlador PID.
+O projeto utilizou somente componentes de baixo custo, com um ótimo desempenho fazendo com que o controle de caminho se mostrasse de bastante valia e preciso.
+Acreditamos ser necessário em um próximo momento estudar possíveis técnicas de controle que possam substituir ou atuar em paralelo ao PID de forma a otimizar o equipamento aqui proposto. 
+Por tal motivo acreditamos que esse projeto deve ter continuidade tendo em vista as possíveis aplicações que ele pode proporcionar. 
+
 
 
   
