@@ -217,6 +217,110 @@ Um controlador integral (Ki) terá o efeito de eliminar o erro em regime permane
 
 Adicionando a ação derivativa pode permitir que você tenha maiores ganhos de P e I e ainda manter o loop estável, dando-lhe uma resposta mais rápida e melhor desempenho de loop. Se você pensar nisso, a ação Derivativa pode melhorar a ação do controlador porque ela prediz o que ainda está por acontecer ao projetar a taxa atual de mudança para o futuro. Isto significa que não está sendo contabilizado o valor medido atual, mas sim um valor de medição futuro.Um controlador derivativo (Kd) terá o efeito de incrementar a estabilidade do sistema, reduzindo o overshoot, e melhorando a resposta transiente.
 
+3.3.4 Testes e Ajuste das Variáveis
+
+Primeiramente consideramos o Kp igual a 10 e zera-se Ki e Kd. Observou-se que o carrinho tem uma resposta com uma boa velocidade. Com os vários testes vimos que a velocidade do carrinho estava diminuindo e então percebeu-se que era por conta das baterias de 9 volts estarem descarregando.
+
+Após a troca das baterias, vimos que o carrinho ficou mais potente. Isto fez com que o Kp diminuísse para 4.  Aumentamos o Kp apenas para ver o seu efeito no sistema e vimos que quando o seu valor é muito grande, a variável de processo começará a oscilar. Se Kc é aumentado ainda mais, as oscilações ficarão maior e o sistema ficará instável e poderá oscilar até mesmo fora de controle.
+
+Já com o valor de Kp novamente definido, tivemos que ajustar o valor de Ki. O primeiro valor de Ki foi 0.01, observou-se que a resposta ficou mais lenta, porém com menos oscilações.
+
+Uma vez que o P e I foram definidos para que o sistema de controle seja rápido com o steady state (é a diferença final entre as variáveis do processo e do set point.) mínimo e constante, o termo derivativo é aumentado até que o loop seja aceitavelmente rápido em relação ao seu ponto de referência. Aumentar o termo da derivada diminui o overshoot, aumentando o ganho, mantendo a estabilidade e ainda fazendo com que o sistema seja altamente sensível ao ruído. Portanto definimos o valor de Kd sendo 0.5.
+
+4. CONSIDERAÇÕES
+
+4.1 APLICAÇÃO
+
+VEÍCULO AUTO EQUILIBRANTE 
+
+ <p align="center"><a href="https://imgur.com/R3nCku0"><img src="https://i.imgur.com/R3nCku0.jpg" title="source: imgur.com" /></a>
+  
+ Utilizando-se do conceito de pêndulo invertido, o veículo auto equilibrante é capaz de transportar indivíduos, incluindo os com deficiência locomotora, com total segurança e conforto, buscando a máxima acessibilidade e ampla utilização do mesmo, a fim de atenuar ou até mesmo eliminar uma deficiência utilizando-se de tecnologia. O projeto está estruturado com uma metálica, com um sistema elétrico e eletrônico, que faz referência ao armazenamento de carga, aos sensores e ao sistema de atuação e o sistema de controle, que limita o controle de velocidade, aceleração e posição do protótipo. 
+ 
+ 4.2 MELHORIAS
+
+4.2.1 Aplicativo de controle pelo celular
+
+ <p align="center"><a href="https://imgur.com/O0K6zGu"><img src="https://i.imgur.com/O0K6zGu.jpg" title="source: imgur.com" /></a>
+  
+4.2.2 Módulo Bluetooth RS232 HC-05 
+
+uma solução simples e barata de comunicar um microcontrolador seja ele Arduino, Raspberry, Pic ou outro com a interface bluetooth do seu dispositivo com alcance de até 10 metros. 
+
+ <p align="center"><a href="https://imgur.com/uQZ3Gnq"><img src="https://i.imgur.com/uQZ3Gnq.jpg" title="source: imgur.com" /></a>
+  
+4.2.3 Display LCD 20×4
+
+Vamos utilizar um Display LCD 20×4 para mostrar os valores lidos do MPU6050 em conjunto com um Arduino Uno. Nas duas primeiras linhas do display, além da temperatura no canto superior direito, temos os valores de X, Y e Z para o Acelerômetro, e nas duas últimas linhas os valores de X, Y e Z para o giroscópio. 
+
+ <p align="center"><a href="https://imgur.com/BFApR2o"><img src="https://i.imgur.com/BFApR2o.jpg" title="source: imgur.com" /></a>
+
+4.3 CUSTOS
+
+4.3.1 Kit Arduino
+
+O Kit Arduino nível zero é composto por todos os componentes mais básicos para um sólido aprendizado dos fundamentos de Arduino, como: LEDs, botões, LDR, NYC, TDRT5000 entre outros, além do próprio Arduino UNO, cabos e um organizador para seus componentes. Esse kit fornece o material necessário para elaboração de diversos projetos básicos. 
+Valor: R$ 119,90
+
+ <p align="center"><a href="https://imgur.com/aDmNo3s"><img src="https://i.imgur.com/aDmNo3s.jpg" title="source: imgur.com" /></a>
+  
+ 4.3.2 Kit Chassi 4WD
+
+O Kit Chassi 4WD é composto por:
+
+02 - Chassi em acrílico
+
+04 - Motores DC 
+
+04 - Rodas
+
+04 - Discos de Encoder
+
+06 - Espaçadores
+
+01 - Jogo de Parafusos e Porcas
+
+Valor: R$ 129,90
+
+
+<p align="center"><a href="https://imgur.com/qdd2743"><img src="https://i.imgur.com/qdd2743.jpg" title="source: imgur.com" /></a>
+  
+ 4.3.3 Drive Ponte H L298N
+
+Este Driver Motor Ponte H L298N tem como principal função o controle de cargas indutivas como: motores DC, solenóides, relés etc. Com este driver é possível controlar independentemente a velocidade e rotação de dois motores DC.
+
+Valor: R$ 26,90
+
+<p align="center"><a href="https://imgur.com/9KNr0q6"><img src="https://i.imgur.com/9KNr0q6.jpg" title="source: imgur.com" /></a>
+  
+4.3.4 Módulo Acelerômetro e Giroscópio MPU6050
+
+O Módulo Acelerômetro e Giroscópio 3 Eixos MPU6050 acompanha:
+
+01 - Acelerômetro e Giroscópio 3 Eixos MPU6050
+
+01 - Barramento de Pinos 90 Graus
+
+01 - Barramento de Pinos 180 Graus
+
+Valor: R$ 22,90
+
+<p align="center"><a href="https://imgur.com/b5X8sB5"><img src="https://i.imgur.com/b5X8sB5.jpg" title="source: imgur.com" /></a>
+  
+4.3.5 Pilhas 9V
+
+Precisamos de duas pilhas 9 volts alcalina. Uma está alimentando a ponte H e a outra o Arduino.
+
+Valor: R$ 40,00
+
+<p align="center"><a href="https://imgur.com/37Ezv3Q"><img src="https://i.imgur.com/37Ezv3Q.jpg" title="source: imgur.com" /></a>
+  
+
+
+  
+  
+
+
 
 
 
