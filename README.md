@@ -204,6 +204,7 @@ Derivative Kick
   
   Reset Windup
   
+  Quando o valor da variável de controle atinge o limite máximo (ou mínimo) do atuador ocorre a saturação do sinal de controle. Este fato faz com que a malha de realimentação seja de certa forma quebrada, pois o atuador permanecerá no seu limite máximo (ou mínimo) independentemente da saída do processo. Entretanto, se um controlador com ação integral é utilizado, o erro continuará a ser integrado e o termo integral tende a se tornar muito grande, ou seja, tende a "carregar-se" demasiadamente. Neste caso, para que o controlador volte a trabalhar na região linear (saia da saturação) é necessário que o termo integral se "descarregue". Para tanto deve-se esperar que o sinal de erro troque de sinal e, por um longo período de tempo, aplicar na entrada do controlador, um sinal de erro de sinal oposto. A consequência disto é que a resposta transitória do sistema tenderá a ficar lenta e oscilatória, o que é extremamente indesejado em um processo industrial.
   quando adicionada essa melhoria, os valores PID da implementação anterior continuaram. começamos adicionando (-150,+150) no SetOutputLimits para limitar a nossa saída. isso fez com que o carrinho perdesse o controle. tivemos que fazer ajustes no PID para chegarmos a um controle mais apurado.
   
   <p align="center"><a href="https://imgur.com/pFi8J7G"><img src="https://i.imgur.com/pFi8J7G.jpg" title="source: imgur.com" /></a>v
