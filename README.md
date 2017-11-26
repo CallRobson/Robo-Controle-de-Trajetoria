@@ -195,12 +195,17 @@ Com a implementação do código sample time, podemos perceber que houve uma mel
 
  <p align="center"><a href="https://imgur.com/60EfF50"><img src="https://i.imgur.com/60EfF50.jpg" title="source: imgur.com" /></a>
   
-  Derivative Kick
+Derivative Kick
   
+ Percebemos que o deriative kick quando implementado sofreu muitas oscilações mesmo tentando ajustar o PID para valores altos e valores baixos. quanto menor o valor do PID que colocavamos, mais oscilações o carrinho sofria na volta da trajetória. até que conseguimos um valor mais alto de PID, que diminuiram as oscilações tendo rapidez e precisão, mas não sendo os valores ideais para o controle do carrinho.
+ 
  <p align="center"><a href="https://imgur.com/II5bwoI"><img src="https://i.imgur.com/II5bwoI.jpg" title="source: imgur.com" /></a>
   
   
   Reset Windup
+  
+    
+  
   
   <p align="center"><a href="https://imgur.com/pFi8J7G"><img src="https://i.imgur.com/pFi8J7G.jpg" title="source: imgur.com" /></a>v
 
