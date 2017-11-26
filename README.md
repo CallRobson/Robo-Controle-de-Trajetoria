@@ -218,6 +218,8 @@ On/Off(auto/Manual)
 
 essa foi uma das implementações mais proximas do ideal. pois o seu controle ao retornar para sua trajetória e sua velocidade na execução, nos mostraram eficácia para o PID em alcance.
 
+ <p align="center"><a href="https://imgur.com/xRoZFGA"><img src="https://i.imgur.com/xRoZFGA.jpg" title="source: imgur.com" /></a>
+
 3.3.2 Sistema de Controle
 
 O sistema de controle tem como principal objetivo, manter o processo dentro dos parâmetros desejados, com o uso de sensores, atuadores e sistemas de computadores projetados para realizar as atividades de maneira segura.  Sendo o processo, no ramo industrial, um conjunto de operações realizadas por um determinado equipamento, ou determinados equipamentos, com pelo menos, uma variável física ou química do material. Alguns conceitos importantes a mencionar:
