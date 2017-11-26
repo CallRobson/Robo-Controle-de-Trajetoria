@@ -204,10 +204,14 @@ Derivative Kick
   
   Reset Windup
   
-    
-  
+  quando adicionada essa melhoria, os valores PID da implementação anterior continuaram. começamos adicionando (-150,+150) no SetOutputLimits para limitar a nossa saída. isso fez com que o carrinho perdesse o controle. tivemos que fazer ajustes no PID para chegarmos a um controle mais apurado.
   
   <p align="center"><a href="https://imgur.com/pFi8J7G"><img src="https://i.imgur.com/pFi8J7G.jpg" title="source: imgur.com" /></a>v
+
+On-The-Fly Tuning
+
+
+ <p align="center"><a href="https://imgur.com/RpZjXXi"><img src="https://i.imgur.com/RpZjXXi.jpg" title="source: imgur.com" /></a>
 
 3.3.2 Sistema de Controle
 
