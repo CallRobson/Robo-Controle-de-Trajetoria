@@ -187,7 +187,22 @@ A figura a seguir mostra a conexão do módulo MPU6050 ao Arduino.
   
   3.3 SOFTWARE
   
-3.3.1 Programação (Código)
+3.3.1 melhorias (Código)
+
+Sample Time
+
+Com a implementação do código sample time, podemos perceber que houve uma melhora no controle final do erro estacionário. A partir dos testes comprovamos que com valores altos de Kp, Ki e Kd o sistema se torna instável. 
+
+ <p align="center"><a href="https://imgur.com/60EfF50"><img src="https://i.imgur.com/60EfF50.jpg" title="source: imgur.com" /></a>
+  
+  Derivative Kick
+  
+ <p align="center"><a href="https://imgur.com/II5bwoI"><img src="https://i.imgur.com/II5bwoI.jpg" title="source: imgur.com" /></a>
+  
+  
+  Reset Windup
+  
+  <p align="center"><a href="https://imgur.com/pFi8J7G"><img src="https://i.imgur.com/pFi8J7G.jpg" title="source: imgur.com" /></a>v
 
 3.3.2 Sistema de Controle
 
