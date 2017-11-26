@@ -211,7 +211,12 @@ Derivative Kick
 On-The-Fly Tuning
 
 
+
  <p align="center"><a href="https://imgur.com/RpZjXXi"><img src="https://i.imgur.com/RpZjXXi.jpg" title="source: imgur.com" /></a>
+
+On/Off(auto/Manual)
+
+essa foi uma das implementações mais proximas do ideal. pois o seu controle ao retornar para sua trajetória e sua velocidade na execução, nos mostraram eficácia para o PID em alcance.
 
 3.3.2 Sistema de Controle
 
