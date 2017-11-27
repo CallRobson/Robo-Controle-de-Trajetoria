@@ -191,6 +191,8 @@ A figura a seguir mostra a conexão do módulo MPU6050 ao Arduino.
 
 Sample Time
 
+O Sample Time é um parâmetro que indica quando, durante a simulação, o sistema produz saídas e, se apropriado, atualiza seu estado interno. O estado interno inclui, mas não está limitado a estados contínuos e discretos que são registrados.
+
 Com a implementação do código sample time, podemos perceber que houve uma melhora no controle final do erro estacionário. A partir dos testes comprovamos que com valores altos de Kp, Ki e Kd o sistema se torna instável. 
 
  <p align="center"><a href="https://imgur.com/60EfF50"><img src="https://i.imgur.com/60EfF50.jpg" title="source: imgur.com" /></a>
