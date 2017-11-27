@@ -218,6 +218,8 @@ On-The-Fly Tuning
 
 On/Off(auto/Manual)
 
+É também conhecido como o controle de “duas posições”, ou controle “liga e desliga”. O sinal de saída tem apenas duas posições que vão de um extremo ao outro, podendo ser: válvula aberta ou válvula fechada, resistência ligada ou resistência desligada, compressor ligado ou
+compressor desligado. 
 essa foi uma das implementações mais proximas do ideal. pois o seu controle ao retornar para sua trajetória e sua velocidade na execução, nos mostraram eficácia para o PID em alcance.
 
  <p align="center"><a href="https://imgur.com/xRoZFGA"><img src="https://i.imgur.com/xRoZFGA.jpg" title="source: imgur.com" /></a>
