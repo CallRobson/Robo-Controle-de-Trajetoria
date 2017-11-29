@@ -285,7 +285,8 @@ void SetSampleTime(int NewSampleTime){
   
   Quando o valor da variável de controle atinge o limite máximo (ou mínimo) do atuador ocorre a saturação do sinal de controle. Este fato faz com que a malha de realimentação seja de certa forma quebrada, pois o atuador permanecerá no seu limite máximo (ou mínimo) independentemente da saída do processo. Entretanto, se um controlador com ação integral é utilizado, o erro continuará a ser integrado e o termo integral tende a se tornar muito grande, ou seja, tende a "carregar-se" demasiadamente. Neste caso, para que o controlador volte a trabalhar na região linear (saia da saturação) é necessário que o termo integral se "descarregue". Para tanto deve-se esperar que o sinal de erro troque de sinal e, por um longo período de tempo, aplicar na entrada do controlador, um sinal de erro de sinal oposto. A consequência disto é que a resposta transitória do sistema tenderá a ficar lenta e oscilatória, o que é extremamente indesejado em um processo industrial.
   
-  Quando adicionada essa melhoria, primeiramente utilizou-se os valores de Kp, Ki e Kd (6, 0.1,1) da implementação anterior. Além disso, foram acrescentados valores de limites mínimos e máximos (-150,+150). Observou-se o carro tinha comportamento instável. Após vários testes de ajustes dos valores de Kp, Ki e Kd, percebeu-se que os valores ideais eram (3,0.1,0.1) e valores de limites mínimos e máximos de -150,+150 começamos adicionando (-150,+150). Mantendo os mesmos valores de Kp, Ki e Kd e alterando apenas os valores dos limites foram obtidos esses resultados: quando os valores de limites mínimos e máximos eram mais baixos, o carro apresentava uma curva maior até se ajustar a trajetória desejada; quando os valores de limites mínimos e máximos eram mais altos, o carro não ajustava a sua trajetória. 
+  Quando adicionada essa melhoria, primeiramente utilizou-se os valores de Kp, Ki e Kd (6, 0.1,1) da implementação anterior. Além disso, foram acrescentados valores de limites mínimos e máximos (-150,+150). Observou-se o carro tinha comportamento instável. Após vários testes de ajustes dos valores de Kp, Ki e Kd, percebeu-se que os valores ideais eram (3,0.1,0.1) e valores de limites mínimos e máximos de -150,+150 começamos adicionando (-150,+150). Mantendo os mesmos valores de Kp, Ki e Kd e alterando apenas os valores dos limites foram obtidos esses resultados: quando os valores de limites mínimos e máximos eram mais baixos, o carro apresentava uma curva maior até se ajustar a trajetória desejada; quando os valores de limites mínimos e máximos eram mais altos, o carro não ajustava a sua trajetória.
+
   
   <p align="center"><a href="https://imgur.com/pFi8J7G"><img src="https://i.imgur.com/pFi8J7G.jpg" title="source: imgur.com" /></a>v
 
@@ -346,7 +347,7 @@ void SetOutputLimits(double Min, double Max)
 
 On-The-Fly Tuning
 
-
+Antes de haver a preocupação de alterar os parâmetros do PID durante seu funcionamento, o PID tinha comportamento normal. Se desejarmos mudar tais parâmetros durante a o funcionamento do projeto, não ocorrerá um bom desempenho, ele irá se comportar de forma louca.
 
  <p align="center"><a href="https://imgur.com/RpZjXXi"><img src="https://i.imgur.com/RpZjXXi.jpg" title="source: imgur.com" /></a>
 
