@@ -192,8 +192,10 @@ A figura a seguir mostra a conexão do módulo MPU6050 ao Arduino.
 Sample Time
 
 O Sample Time é um parâmetro que indica quando, durante a simulação, o sistema produz saídas e, se apropriado, atualiza seu estado interno. O estado interno inclui, mas não está limitado a estados contínuos e discretos que são registrados.
+O PID deve ser chamado de forma regular para que o resultado seja ideal. Isso é possível a partir da criação de uma variável chamada SampleTime, cujo valor é declarado no código. Se o usuário decidir mudar o valor do Sample Time, então há uma função chamada SetSampleTime, onde é feito o reajuste de kd e ki.
 
-Com a implementação do código sample time, podemos perceber que houve uma melhora no controle final do erro estacionário. A partir dos testes comprovamos que com valores altos de Kp, Ki e Kd o sistema se torna instável. 
+Com a implementação do código do Sample Time, percebeu-se que os valores de Kp, Ki e Kd ideais eram (1,0.0001,0.01), respectivamente. PUdemos perceber que houve uma melhora no controle final do erro estacionário, ou seja, ele ajustava com rapidez a sua trajetória. A partir dos testes comprovamos que com valores maiores de Kp, Ki e Kd (6,0.0006,0.06) o sistema se torna instável, apresentando oscilações. 
+ 
 
  <p align="center"><a href="https://imgur.com/60EfF50"><img src="https://i.imgur.com/60EfF50.jpg" title="source: imgur.com" /></a>
   
