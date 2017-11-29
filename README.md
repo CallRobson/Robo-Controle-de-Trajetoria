@@ -347,7 +347,13 @@ void SetOutputLimits(double Min, double Max)
 
 On-The-Fly Tuning
 
-Antes de haver a preocupação de alterar os parâmetros do PID durante seu funcionamento, o PID tinha comportamento normal. Se desejarmos mudar tais parâmetros durante a o funcionamento do projeto, não ocorrerá um bom desempenho, ele irá se comportar de forma louca.
+Antes de haver a preocupação de alterar os parâmetros do PID durante seu funcionamento, o PID tinha comportamento normal. Se desejarmos mudar tais parâmetros durante a o funcionamento do projeto, não ocorrerá um bom desempenho, ele irá se comportar de forma louca. O causador disso é o Termo Integral (ou "Termo I"), pois é a única coisa que muda drasticamente quando os parâmetros mudam. 
+
+Esta interpretação funciona bem até que o Ki seja alterado. Então, de repente, você multiplica este novo Ki vezes a soma de erro total que você acumulou. Isso não é o que queríamos! Nós só queríamos afetar as coisas avançando!
+
+<p align="center"><a href="https://imgur.com/Lgh2xZO"><img src="https://i.imgur.com/Lgh2xZO.png" title="source: imgur.com" /></a>
+
+
 
  <p align="center"><a href="https://imgur.com/RpZjXXi"><img src="https://i.imgur.com/RpZjXXi.jpg" title="source: imgur.com" /></a>
 
