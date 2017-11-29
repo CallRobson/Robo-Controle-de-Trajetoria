@@ -582,9 +582,10 @@ On/Off(auto/Manual)
 
   A solução para este problema é ter um meio para desligar e ligar o PID. Os termos comuns para esses estados são "Manual" (ajustarei o valor manualmente) e "Automático" (o PID ajustará automaticamente a saída).
   
-  
+  Como no projeto não foi implementado nenhum tipo de equipamento que pudesse interferir nos valores de saída, então só foram feitos testes no modo Automático.
 
-  Essa foi uma das implementações mais próximas do ideal, pois o seu controle ao retornar para sua trajetória e sua velocidade na execução nos mostraram eficácia para o PID em alcance.
+  Essa foi uma das implementações mais próximas do ideal, pois o seu controle ao retornar para sua trajetória e sua velocidade na execução nos mostraram eficácia para o PID em alcance. Os valores ideais dos poarâmetros do PID eram (Kp=3,Ki=0.01,kd=0.01). Além disso, foram acrescentados valores de limites mínimos e máximos (-150,+150).
+
 
  <p align="center"><a href="https://imgur.com/xRoZFGA"><img src="https://i.imgur.com/xRoZFGA.jpg" title="source: imgur.com" /></a>
 
