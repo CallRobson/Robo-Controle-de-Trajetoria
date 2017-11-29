@@ -272,9 +272,6 @@ CÓDIGO SAMPLE TIME
 
 
 
-
-
-
 Derivative Kick
   
   Uma vez que o erro = Setpoint-Input, qualquer alteração no Setpoint causa uma alteração instantânea no erro. Um bloco derivativo de um controlador PID calcula a derivada momentânea do sinal. Quando o valor ajustado muda de repente, obtemos uma saída derivada muito grande. A derivada não é apenas desnecessariamente grande, também é apontada na direção errada. Esse termo derivado impedirá o propósito pretendido. A solução é que em vez de adicionar (Kd * derivative of Error), subtrai-se (Kd * derivative of Input).
@@ -354,14 +351,11 @@ void SetSampleTime(int NewSampleTime){
   
   
   
-  
-  
-  
   Reset Windup
   
   Quando o valor da variável de controle atinge o limite máximo (ou mínimo) do atuador ocorre a saturação do sinal de controle. Este fato faz com que a malha de realimentação seja de certa forma quebrada, pois o atuador permanecerá no seu limite máximo (ou mínimo) independentemente da saída do processo. Entretanto, se um controlador com ação integral é utilizado, o erro continuará a ser integrado e o termo integral tende a se tornar muito grande, ou seja, tende a "carregar-se" demasiadamente. Neste caso, para que o controlador volte a trabalhar na região linear (saia da saturação) é necessário que o termo integral se "descarregue". Para tanto deve-se esperar que o sinal de erro troque de sinal e, por um longo período de tempo, aplicar na entrada do controlador, um sinal de erro de sinal oposto. A consequência disto é que a resposta transitória do sistema tenderá a ficar lenta e oscilatória, o que é extremamente indesejado em um processo industrial.
   
-  Quando adicionada essa melhoria, primeiramente utilizou-se os valores de Kp, Ki e Kd (6, 0.1,1) da implementação anterior. Além disso, foram acrescentados valores de limites mínimos e máximos (-150,+150). Observou-se o carro tinha comportamento instável. Após vários testes de ajustes dos valores de Kp, Ki e Kd, percebeu-se que os valores ideais eram (3,0.1,0.1) e valores de limites mínimos e máximos de -150,+150 começamos adicionando (-150,+150). Mantendo os mesmos valores de Kp, Ki e Kd e alterando apenas os valores dos limites foram obtidos esses resultados: quando os valores de limites mínimos e máximos eram mais baixos, o carro apresentava uma curva maior até se ajustar a trajetória desejada; quando os valores de limites mínimos e máximos eram mais altos, o carro não ajustava a sua trajetória.
+  Quando adicionada essa melhoria, primeiramente utilizou-se os valores de Kp, Ki e Kd (6, 0.1,1) da implementação anterior. Além disso, foram acrescentados valores de limites mínimos e máximos (-150,+150). Observou-se o carro tinha comportamento instável. Após vários testes de ajustes dos valores de Kp, Ki e Kd, percebeu-se que os valores ideais eram (3,0.1,0.1) e valores de limites mínimos e máximos de -150 e +150 . Mantendo os mesmos valores de Kp, Ki e Kd e alterando apenas os valores dos limites foram obtidos esses resultados: quando os valores de limites mínimos e máximos eram mais baixos, o carro apresentava uma curva maior até se ajustar a trajetória desejada; quando os valores de limites mínimos e máximos eram mais altos, o carro não ajustava a sua trajetória.
 
   
   <p align="center"><a href="https://imgur.com/pFi8J7G"><img src="https://i.imgur.com/pFi8J7G.jpg" title="source: imgur.com" /></a>v
@@ -469,25 +463,23 @@ void SetOutputLimits(double Min, double Max)
 
 
 
+On-The-Fly Tuning Changes
 
+  Antes de haver a preocupação de alterar os parâmetros do PID durante seu funcionamento, o PID tinha comportamento normal. Se desejarmos mudar tais parâmetros durante a o funcionamento do projeto, não ocorrerá um bom desempenho, ele irá se comportar de forma louca. O causador disso é o Termo Integral (ou "Termo I"), pois é a única coisa que muda drasticamente quando os parâmetros mudam. 
 
-
-
-On-The-Fly Tuning
-
-Antes de haver a preocupação de alterar os parâmetros do PID durante seu funcionamento, o PID tinha comportamento normal. Se desejarmos mudar tais parâmetros durante a o funcionamento do projeto, não ocorrerá um bom desempenho, ele irá se comportar de forma louca. O causador disso é o Termo Integral (ou "Termo I"), pois é a única coisa que muda drasticamente quando os parâmetros mudam. 
-
-Esta interpretação funciona bem até que o Ki seja alterado. Então, de repente, você multiplica este novo Ki vezes a soma de erro total que você acumulou. 
+  Esta interpretação funciona bem até que o Ki seja alterado. Então, de repente, você multiplica este novo Ki vezes a soma de erro total que você acumulou. 
 
 <p align="center"><a href="https://imgur.com/Lgh2xZO"><img src="https://i.imgur.com/Lgh2xZO.png" title="source: imgur.com" /></a>
 
-Em vez de ter o Ki fora da integral, trazemos para dentro. 
+  Em vez de ter o Ki fora da integral, trazemos para dentro. 
+
+ Para a melhoria On-The-Fly Tuning Changes, utilizou-se primeiramente os valores de Kp, Ki e Kd (10, 0.3,0.3), com isso o carro apresentava algumas oscilações até estabilizar. Após vários testes de ajustes dos valores de Kp, Ki e Kd, percebeu-se que os valores ideais eram (3,0.1,0.1). Quando os tstes eram com valores de parâmetros mais baixos (Kp=1,Ki=0.03,kd=0.03), o carro apresentava uma curva maior até se ajustar a trajetória desejada.
 
 
  <p align="center"><a href="https://imgur.com/RpZjXXi"><img src="https://i.imgur.com/RpZjXXi.jpg" title="source: imgur.com" /></a>
 
 
-CÓDIGO ON-THE-LY TUNING CHANGES
+CÓDIGO ON-THE-FLY TUNING CHANGES
 
 //PID - On-The-Fly Tuning Changes
 
