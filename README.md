@@ -215,31 +215,59 @@ CÓDIGO SAMPLE TIME
  //Ang_ant = Ang;
  
  void Compute(){
+ 
   unsigned long Tatual = millis();
+  
   int Dt = (Tatual - Ta);
+  
   if(Dt>=SampleTime){
+  
   double Erro = SetPoint - Ang;  //setpoint = primeira leitura. angulo inicial
+  
   errSum += Erro;
+  
   double dErr = (Erro - lastErr);
+  
   Output = kp * Erro + ki * errSum + kd * dErr;
+  
   lastErr = Erro;
+  
   Ta = Tatual;
+  
   }
+  
  }
+ 
  void SetTunings(double Kp, double Ki, double Kd){
+ 
   double SampleTimeInSec = ((double)SampleTime)/1000;
+  
   kp = Kp;
+  
   ki = Ki * SampleTimeInSec;
+  
   kd = Kd / SampleTimeInSec;
+  
  }
+ 
  void SetSampleTime(int NewSampleTime){
+ 
   if (NewSampleTime > 0){
+  
   double ratio = (double)NewSampleTime / (double)SampleTime;
+  
   ki *= ratio;
+  
   kd /= ratio;
+  
   SampleTime = (unsigned long)NewSampleTime;
+  
   }
+  
  }
+ 
+ 
+
 
 
 
@@ -254,37 +282,69 @@ Derivative Kick
   
   
  CÓDIGO DERIVATIVE KICK 
+ 
   //PID: Derivative Kick
+  
 unsigned long Ta;
+
 double Ang, Output, SetPoint;
+
 double errSum, Ang_ant; double kp, ki, kd;
+
 int SampleTime = 1000; //1 sec
+
 void Compute(){
+
  unsigned long Tatual = millis();
+ 
  int timeChange = (Tatual - Ta);
+ 
  if(timeChange>=SampleTime){
+ 
  double Erro = SetPoint - Ang;
+ 
  errSum += Erro;
+ 
  double dAng = (Ang - Ang_ant);
+ 
  Output = kp * Erro + ki * errSum - kd * dAng;
+ 
  Ang_ant = Ang;
+ 
  Ta = Tatual;
+ 
  }
+ 
 }
+
 void SetTunings(double Kp, double Ki, double Kd){
+
  double SampleTimeInSec = ((double)SampleTime)/1000;
+ 
  kp = Kp;
+ 
  ki = Ki * SampleTimeInSec;
+ 
  kd = Kd / SampleTimeInSec;
+ 
 }
+
 void SetSampleTime(int NewSampleTime){
+
  if (NewSampleTime > 0){
+ 
  double ratio = (double)NewSampleTime / (double)SampleTime;
+ 
  ki *= ratio;
+ 
  kd /= ratio;
+ 
  SampleTime = (unsigned long)NewSampleTime;
+ 
  }
+ 
 }
+
 
   
   
@@ -299,56 +359,102 @@ void SetSampleTime(int NewSampleTime){
 
 
 CÓDIGO RESET WINDUP
+
 //PID - Reset Windup
+
 unsigned long Ta;
+
 double Ang, Output, SetPoint;
+
 double errSum, Ang_ant; double kp, ki, kd;
+
 double ITerm, outMin, outMax;
+
 int SampleTime = 1000; //1 sec
+
 void Compute(){
+
  unsigned long Tatual = millis();
  int timeChange = (Tatual - Ta);
+ 
  if(timeChange>=SampleTime){
+ 
  double Erro = SetPoint - Ang;
+ 
  ITerm+= (ki * Erro);
+ 
  if(ITerm> outMax) ITerm= outMax;
+ 
  else if(ITerm< outMin) ITerm= outMin;
+ 
  double dAng = (Ang - Ang_ant);
+ 
  Output = kp * Erro + ITerm- kd * dAng;
+ 
  if(Output > outMax) Output = outMax;
+ 
  else if(Output < outMin) Output = outMin;
+ 
  Ang_ant = Ang;
+ 
  Ta = Tatual;
+ 
  }
+ 
 }
 
+
 void SetTunings(double Kp, double Ki, double Kd){
+
  double SampleTimeInSec = ((double)SampleTime)/1000;
+ 
  kp = Kp;
+ 
  ki = Ki * SampleTimeInSec;
+ 
  kd = Kd / SampleTimeInSec;
+ 
 }
+
 void SetSampleTime(int NewSampleTime){
+
  if (NewSampleTime > 0){
+ 
  double ratio = (double)NewSampleTime / (double)SampleTime;
+ 
  ki *= ratio;
+ 
  kd /= ratio;
+ 
  SampleTime = (unsigned long)NewSampleTime;
+ 
  }
+ 
 }
+
 
 
 void SetOutputLimits(double Min, double Max)
+
 {
+
  if(Min > Max) return;
+ 
  outMin = Min;
+ 
  outMax = Max;
+ 
 
  if(Output > outMax) Output = outMax;
+ 
  else if(Output < outMin) Output = outMin;
+ 
  if(ITerm> outMax) ITerm= outMax;
+ 
  else if(ITerm< outMin) ITerm= outMin;
+ 
 }
+
 
 
 
@@ -366,50 +472,91 @@ Esta interpretação funciona bem até que o Ki seja alterado. Então, de repent
 
 
 CÓDIGO ON-THE-LY TUNING CHANGES
+
 //PID - On-The-Fly Tuning Changes
+
 unsigned long Ta;
+
 double Ang, Output, SetPoint;
+
 double ITerm, Ang_ant;
+
 double kp, ki, kd;
+
 int SampleTime = 1000; //1 sec
+
 void Compute()
+
 {
+
    unsigned long Tatual = millis();
+   
    int timeChange = (Tatual - Ta);
+   
    if(timeChange>=SampleTime)
+   
    {
+   
       /*Compute all the working error variables*/
+      
       double Erro = SetPoint - Ang;
+      
       ITerm += (ki * Erro);
+      
       double dAng = (Ang - Ang_ant);
+      
  
       /*Compute PID Output*/
+      
       Output = kp * Erro + ITerm - kd * dAng;
+      
  
       /*Remember some variables for next time*/
-Ang_ant = Ang;
+      
+  Ang_ant = Ang;
+
  Ta = Tatual;
+ 
    }
+   
 }
+
  
 void SetTunings(double Kp, double Ki, double Kd)
+
 {
+
   double SampleTimeInSec = ((double)SampleTime)/1000;
+  
    kp = Kp;
+   
    ki = Ki * SampleTimeInSec;
+   
    kd = Kd / SampleTimeInSec;
+   
 }
+
  
 void SetSampleTime(int NewSampleTime)
+
 {
+
    if (NewSampleTime > 0)
+   
    {
+   
       double ratio  = (double)NewSampleTime / (double)SampleTime;
+      
       ki *= ratio;
+      
       kd /= ratio;
+      
       SampleTime = (unsigned long)NewSampleTime;
+      
    }
+   
 }
+
 
 
 
