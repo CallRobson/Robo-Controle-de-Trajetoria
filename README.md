@@ -576,8 +576,15 @@ void SetSampleTime(int NewSampleTime)
 
 On/Off(auto/Manual)
 
-É também conhecido como o controle de “duas posições”, ou controle “liga e desliga”. O sinal de saída tem apenas duas posições que vão de um extremo ao outro, podendo ser: válvula aberta ou válvula fechada, resistência ligada ou resistência desligada, compressor ligado ou compressor desligado. 
-Essa foi uma das implementações mais próximas do ideal, pois o seu controle ao retornar para sua trajetória e sua velocidade na execução nos mostraram eficácia para o PID em alcance.
+  É também conhecido como o controle de “duas posições”, ou controle “liga e desliga”. O sinal de saída tem apenas duas posições que vão de um extremo ao outro, podendo ser: válvula aberta ou válvula fechada, resistência ligada ou resistência desligada, compressor ligado ou compressor desligado. 
+
+  Se em algum momento do seu programa que você deseja forçar a saída para um determinado valor, basta substituir seu valor. No entanto, esta é uma idéia terrível na prática. O PID ficará muito confuso.
+
+  A solução para este problema é ter um meio para desligar e ligar o PID. Os termos comuns para esses estados são "Manual" (ajustarei o valor manualmente) e "Automático" (o PID ajustará automaticamente a saída).
+  
+  
+
+  Essa foi uma das implementações mais próximas do ideal, pois o seu controle ao retornar para sua trajetória e sua velocidade na execução nos mostraram eficácia para o PID em alcance.
 
  <p align="center"><a href="https://imgur.com/xRoZFGA"><img src="https://i.imgur.com/xRoZFGA.jpg" title="source: imgur.com" /></a>
 
