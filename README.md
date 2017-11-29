@@ -576,11 +576,155 @@ void SetSampleTime(int NewSampleTime)
 
 On/Off(auto/Manual)
 
-É também conhecido como o controle de “duas posições”, ou controle “liga e desliga”. O sinal de saída tem apenas duas posições que vão de um extremo ao outro, podendo ser: válvula aberta ou válvula fechada, resistência ligada ou resistência desligada, compressor ligado ou
-compressor desligado. 
-essa foi uma das implementações mais proximas do ideal. pois o seu controle ao retornar para sua trajetória e sua velocidade na execução, nos mostraram eficácia para o PID em alcance.
+É também conhecido como o controle de “duas posições”, ou controle “liga e desliga”. O sinal de saída tem apenas duas posições que vão de um extremo ao outro, podendo ser: válvula aberta ou válvula fechada, resistência ligada ou resistência desligada, compressor ligado ou compressor desligado. 
+Essa foi uma das implementações mais próximas do ideal, pois o seu controle ao retornar para sua trajetória e sua velocidade na execução nos mostraram eficácia para o PID em alcance.
 
  <p align="center"><a href="https://imgur.com/xRoZFGA"><img src="https://i.imgur.com/xRoZFGA.jpg" title="source: imgur.com" /></a>
+
+
+ //PID - On/Off
+ 
+/*working variables*/
+
+unsigned long Ta;
+
+double Ang, Output, SetPoint;
+
+double ITerm, Ang_ant;
+
+double kp, ki, kd;
+
+int SampleTime = 1000; //1 sec
+
+double outMin, outMax;
+
+bool inAuto = false;
+
+ 
+#define MANUAL 0
+
+#define AUTOMATIC 1
+
+ 
+void Compute()
+
+{
+
+   if(!inAuto) return;
+   
+   unsigned long Tatual = millis();
+   
+   int timeChange = (Tatual - Ta);
+   
+   if(timeChange>=SampleTime)
+   
+   {
+   
+      /*Compute all the working error variables*/
+      
+      double Erro = SetPoint - Ang;
+      
+      ITerm+= (ki * Erro);
+      
+      if(ITerm> outMax) ITerm= outMax;
+      
+      else if(ITerm< outMin) ITerm= outMin;
+      
+      double dAng = (Ang - Ang_ant);
+      
+ 
+      /*Compute PID Output*/
+      
+      Output = kp * Erro + ITerm- kd * dAng;
+      
+      if(Output > outMax) Output = outMax;
+      
+      else if(Output < outMin) Output = outMin;
+      
+ 
+      /*Remember some variables for next time*/
+      
+      Ang_ant = Ang;
+      
+      Ta = Tatual;
+      
+   }
+   
+}
+
+ 
+void SetTunings(double Kp, double Ki, double Kd)
+
+{
+
+  double SampleTimeInSec = ((double)SampleTime)/1000;
+  
+   kp = Kp;
+   
+   ki = Ki * SampleTimeInSec;
+   
+   kd = Kd / SampleTimeInSec;
+   
+}
+
+ 
+void SetSampleTime(int NewSampleTime)
+
+{
+
+   if (NewSampleTime > 0)
+   
+   {
+   
+      double ratio  = (double)NewSampleTime / (double)SampleTime;
+      
+      ki *= ratio;
+      
+      kd /= ratio;
+      
+      SampleTime = (unsigned long)NewSampleTime;
+      
+   }
+   
+}
+
+ 
+void SetOutputLimits(double Min, double Max)
+
+{
+
+   if(Min > Max) return;
+   
+   outMin = Min;
+   
+   outMax = Max;
+   
+    
+   if(Output > outMax) Output = outMax;
+   
+   else if(Output < outMin) Output = outMin;
+   
+ 
+   if(ITerm> outMax) ITerm= outMax;
+   
+   else if(ITerm< outMin) ITerm= outMin;
+   
+}
+
+ 
+void SetMode(int Mode)
+
+{
+
+  inAuto = (Mode == AUTOMATIC);
+  
+}
+
+
+
+
+
+
 
 3.3.2 Sistema de Controle
 
