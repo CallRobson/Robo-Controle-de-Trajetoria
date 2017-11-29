@@ -201,12 +201,19 @@ O PID deve ser chamado de forma regular para que o resultado seja ideal. Isso é
   
 
 CÓDIGO SAMPLE TIME
+
 //PID – Sample Time
+
  unsigned long Ta; 
+ 
  double Ang, Output, SetPoint, errSum, lastErr;
+ 
  double kp, ki, kd;
+ 
  int SampleTime = 1000; //1 sec
+ 
  //Ang_ant = Ang;
+ 
  void Compute(){
   unsigned long Tatual = millis();
   int Dt = (Tatual - Ta);
