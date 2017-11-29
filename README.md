@@ -201,6 +201,8 @@ O PID deve ser chamado de forma regular para que o resultado seja ideal. Isso é
   
 Derivative Kick
   
+  Uma vez que o erro = Setpoint-Input, qualquer alteração no Setpoint causa uma alteração instantânea no erro. Um bloco derivativo de um controlador PID calcula a derivada momentânea do sinal. Quando o valor ajustado muda de repente, obtemos uma saída derivada muito grande. A derivada não é apenas desnecessariamente grande, também é apontada na direção errada. Esse termo derivado impedirá o propósito pretendido. A solução é que em vez de adicionar (Kd * derivative of Error), subtrai-se (Kd * derivative of Input).
+  
  Foi observado que o Derivative Kick quando implementado sofreu muitas oscilações mesmo tentando ajustar o PID para valores altos e valores baixos. Foi visto que com valores menores de Kp, Ki e Kd (1,0.0001,0.01), mais oscilações o carrinho sofria até atingir a estabilidade. Após vários testes, conseguimos valores de Kp, Ki e Kd ideais que eram (6,0.1,1), respectivamente. Com isso, diminuíram as oscilações e houve maior rapidez e precisão.
     
  
