@@ -189,6 +189,8 @@ A figura a seguir mostra a conexão do módulo MPU6050 ao Arduino.
   
 3.3.1 Melhorias (Código)
 
+  O objetivo do carro era sempre seguir reto na direção inicial. Para isso foram feitos vários testes em cada melhoria. Os resultados das trajetórias foram mostrados nos gráficos plotados através do software do Arduino. Para que houvesse uma padronização dos testes, o carro foi colocado alinhado à uma reta e no meio do percurso sua trajetória tinha um desvio de 90° feito pelos próprios integrantes da equipe.
+
 Sample Time
 
   O Sample Time é um parâmetro que indica quando, durante a simulação, o sistema produz saídas e, se apropriado, atualiza seu estado interno. O estado interno inclui, mas não está limitado a estados contínuos e discretos que são registrados.
