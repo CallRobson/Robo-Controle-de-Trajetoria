@@ -187,7 +187,7 @@ A figura a seguir mostra a conexão do módulo MPU6050 ao Arduino.
   
   3.3 SOFTWARE
   
-3.3.1 melhorias (Código)
+3.3.1 Melhorias (Código)
 
 Sample Time
 
@@ -199,6 +199,43 @@ O PID deve ser chamado de forma regular para que o resultado seja ideal. Isso é
 
  <p align="center"><a href="https://imgur.com/60EfF50"><img src="https://i.imgur.com/60EfF50.jpg" title="source: imgur.com" /></a>
   
+
+CÓDIGO SAMPLE TIME
+//PID – Sample Time
+ unsigned long Ta; 
+ double Ang, Output, SetPoint, errSum, lastErr;
+ double kp, ki, kd;
+ int SampleTime = 1000; //1 sec
+ //Ang_ant = Ang;
+ void Compute(){
+  unsigned long Tatual = millis();
+  int Dt = (Tatual - Ta);
+  if(Dt>=SampleTime){
+  double Erro = SetPoint - Ang;  //setpoint = primeira leitura. angulo inicial
+  errSum += Erro;
+  double dErr = (Erro - lastErr);
+  Output = kp * Erro + ki * errSum + kd * dErr;
+  lastErr = Erro;
+  Ta = Tatual;
+  }
+ }
+ void SetTunings(double Kp, double Ki, double Kd){
+  double SampleTimeInSec = ((double)SampleTime)/1000;
+  kp = Kp;
+  ki = Ki * SampleTimeInSec;
+  kd = Kd / SampleTimeInSec;
+ }
+ void SetSampleTime(int NewSampleTime){
+  if (NewSampleTime > 0){
+  double ratio = (double)NewSampleTime / (double)SampleTime;
+  ki *= ratio;
+  kd /= ratio;
+  SampleTime = (unsigned long)NewSampleTime;
+  }
+ }
+
+
+
 Derivative Kick
   
   Uma vez que o erro = Setpoint-Input, qualquer alteração no Setpoint causa uma alteração instantânea no erro. Um bloco derivativo de um controlador PID calcula a derivada momentânea do sinal. Quando o valor ajustado muda de repente, obtemos uma saída derivada muito grande. A derivada não é apenas desnecessariamente grande, também é apontada na direção errada. Esse termo derivado impedirá o propósito pretendido. A solução é que em vez de adicionar (Kd * derivative of Error), subtrai-se (Kd * derivative of Input).
@@ -207,6 +244,41 @@ Derivative Kick
     
  
  <p align="center"><a href="https://imgur.com/II5bwoI"><img src="https://i.imgur.com/II5bwoI.jpg" title="source: imgur.com" /></a>
+  
+  
+ CÓDIGO DERIVATIVE KICK 
+  //PID: Derivative Kick
+unsigned long Ta;
+double Ang, Output, SetPoint;
+double errSum, Ang_ant; double kp, ki, kd;
+int SampleTime = 1000; //1 sec
+void Compute(){
+ unsigned long Tatual = millis();
+ int timeChange = (Tatual - Ta);
+ if(timeChange>=SampleTime){
+ double Erro = SetPoint - Ang;
+ errSum += Erro;
+ double dAng = (Ang - Ang_ant);
+ Output = kp * Erro + ki * errSum - kd * dAng;
+ Ang_ant = Ang;
+ Ta = Tatual;
+ }
+}
+void SetTunings(double Kp, double Ki, double Kd){
+ double SampleTimeInSec = ((double)SampleTime)/1000;
+ kp = Kp;
+ ki = Ki * SampleTimeInSec;
+ kd = Kd / SampleTimeInSec;
+}
+void SetSampleTime(int NewSampleTime){
+ if (NewSampleTime > 0){
+ double ratio = (double)NewSampleTime / (double)SampleTime;
+ ki *= ratio;
+ kd /= ratio;
+ SampleTime = (unsigned long)NewSampleTime;
+ }
+}
+
   
   
   Reset Windup
